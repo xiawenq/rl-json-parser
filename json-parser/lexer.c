@@ -1,5 +1,5 @@
 
-#line 1 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 1 "lexer.rl"
 /*
 ** json-parser Copyright 2015(c) Wael El Oraiby. All Rights Reserved
 **
@@ -59,7 +59,7 @@ extern void     parser(void *yyp, int yymajor, token_t yyminor, json_parser_t* s
 
 
 
-#line 63 "/home/wael/projects/rl-json-parser/json-parser/lexer.c"
+#line 63 "lexer.c"
 static const char _scanner_actions[] = {
 	0, 1, 0, 1, 1, 1, 3, 1, 
 	4, 1, 5, 1, 6, 1, 7, 1, 
@@ -202,7 +202,7 @@ static const int scanner_en_j_string = 32;
 static const int scanner_en_main = 21;
 
 
-#line 126 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 126 "lexer.rl"
 
 
 static int
@@ -263,6 +263,11 @@ json_parse(const char* str)
     json_return_t		ret;
     ret.status	= JSON_INVALID_INPUT;
     ret.value	= NULL;
+    
+    /* Check if str pointer null. */
+    if ( !str ) {
+        return ret;
+    }
 
     void*		yyparser;
     size_t		line	= 1;
@@ -294,7 +299,7 @@ json_parse(const char* str)
     memset(tmp, 0, sizeof(tmp));
 
     
-#line 298 "/home/wael/projects/rl-json-parser/json-parser/lexer.c"
+#line 303 "lexer.c"
 	{
 	cs = scanner_start;
 	ts = 0;
@@ -302,10 +307,10 @@ json_parse(const char* str)
 	act = 0;
 	}
 
-#line 217 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 222 "lexer.rl"
 
     
-#line 309 "/home/wael/projects/rl-json-parser/json-parser/lexer.c"
+#line 314 "lexer.c"
 	{
 	int _klen;
 	unsigned int _trans;
@@ -326,7 +331,7 @@ _resume:
 #line 1 "NONE"
 	{ts = p;}
 	break;
-#line 330 "/home/wael/projects/rl-json-parser/json-parser/lexer.c"
+#line 335 "lexer.c"
 		}
 	}
 
@@ -393,15 +398,15 @@ _eof_trans:
 		switch ( *_acts++ )
 		{
 	case 0:
-#line 67 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 67 "lexer.rl"
 	{ ++line; }
 	break;
 	case 1:
-#line 69 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 69 "lexer.rl"
 	{ {cs = 21;goto _again;} }
 	break;
 	case 2:
-#line 80 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 80 "lexer.rl"
 	{ string_e = ts; ADVANCE_STRING(JSON_TOK_STRING); string_s = NULL; string_e = NULL; {cs = 21;goto _again;} }
 	break;
 	case 5:
@@ -409,139 +414,139 @@ _eof_trans:
 	{te = p+1;}
 	break;
 	case 6:
-#line 74 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 74 "lexer.rl"
 	{te = p+1;{ }}
 	break;
 	case 7:
-#line 75 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 75 "lexer.rl"
 	{te = p+1;{ }}
 	break;
 	case 8:
-#line 76 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 76 "lexer.rl"
 	{te = p+1;{
                                         ret.status = JSON_INVALID_STRING;
                                         cs = scanner_error;
                                     }}
 	break;
 	case 9:
-#line 80 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 80 "lexer.rl"
 	{te = p+1;}
 	break;
 	case 10:
-#line 85 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 85 "lexer.rl"
 	{te = p+1;{ }}
 	break;
 	case 11:
-#line 81 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 81 "lexer.rl"
 	{te = p;p--;{
                                         ret.status = JSON_INVALID_STRING;
                                         cs = scanner_error;
                                     }}
 	break;
 	case 12:
-#line 81 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 81 "lexer.rl"
 	{{p = ((te))-1;}{
                                         ret.status = JSON_INVALID_STRING;
                                         cs = scanner_error;
                                     }}
 	break;
 	case 13:
-#line 98 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 98 "lexer.rl"
 	{act = 11;}
 	break;
 	case 14:
-#line 100 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 100 "lexer.rl"
 	{act = 12;}
 	break;
 	case 15:
-#line 106 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 106 "lexer.rl"
 	{act = 13;}
 	break;
 	case 16:
-#line 116 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 116 "lexer.rl"
 	{act = 20;}
 	break;
 	case 17:
-#line 124 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 124 "lexer.rl"
 	{act = 24;}
 	break;
 	case 18:
-#line 89 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 89 "lexer.rl"
 	{te = p+1;{ ADVANCE( boolean, JSON_TOK_BOOLEAN );}}
 	break;
 	case 19:
-#line 90 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 90 "lexer.rl"
 	{te = p+1;{ ADVANCE( boolean, JSON_TOK_BOOLEAN );}}
 	break;
 	case 20:
-#line 91 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 91 "lexer.rl"
 	{te = p+1;{ ADVANCE( none,    JSON_TOK_NONE    );}}
 	break;
 	case 21:
-#line 94 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 94 "lexer.rl"
 	{te = p+1;{ string_s = te; {cs = 32;goto _again;} }}
 	break;
 	case 22:
-#line 109 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 109 "lexer.rl"
 	{te = p+1;{ ADVANCE_TOKEN( JSON_TOK_LBRACK );}}
 	break;
 	case 23:
-#line 110 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 110 "lexer.rl"
 	{te = p+1;{ ADVANCE_TOKEN( JSON_TOK_RBRACK );}}
 	break;
 	case 24:
-#line 111 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 111 "lexer.rl"
 	{te = p+1;{ ADVANCE_TOKEN( JSON_TOK_LSQB   );}}
 	break;
 	case 25:
-#line 112 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 112 "lexer.rl"
 	{te = p+1;{ ADVANCE_TOKEN( JSON_TOK_RSQB   );}}
 	break;
 	case 26:
-#line 113 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 113 "lexer.rl"
 	{te = p+1;{ ADVANCE_TOKEN( JSON_TOK_COL    );}}
 	break;
 	case 27:
-#line 114 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 114 "lexer.rl"
 	{te = p+1;{ ADVANCE_TOKEN( JSON_TOK_COMMA  );}}
 	break;
 	case 28:
-#line 119 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 119 "lexer.rl"
 	{te = p+1;{ ret.status = JSON_INVALID_CHARACTER; cs = scanner_error; }}
 	break;
 	case 29:
-#line 122 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 122 "lexer.rl"
 	{te = p+1;{ {cs = 15;goto _again;} }}
 	break;
 	case 30:
-#line 123 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 123 "lexer.rl"
 	{te = p+1;}
 	break;
 	case 31:
-#line 98 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 98 "lexer.rl"
 	{te = p;p--;{ ADVANCE( number, JSON_TOK_NUMBER ); }}
 	break;
 	case 32:
-#line 100 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 100 "lexer.rl"
 	{te = p;p--;{
                                     ret.status	= JSON_INVALID_NUMBER;
                                     cs	= scanner_error;
                                 }}
 	break;
 	case 33:
-#line 106 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 106 "lexer.rl"
 	{te = p;p--;{ ADVANCE( number, JSON_TOK_NUMBER );}}
 	break;
 	case 34:
-#line 119 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 119 "lexer.rl"
 	{te = p;p--;{ ret.status = JSON_INVALID_CHARACTER; cs = scanner_error; }}
 	break;
 	case 35:
-#line 98 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 98 "lexer.rl"
 	{{p = ((te))-1;}{ ADVANCE( number, JSON_TOK_NUMBER ); }}
 	break;
 	case 36:
-#line 119 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 119 "lexer.rl"
 	{{p = ((te))-1;}{ ret.status = JSON_INVALID_CHARACTER; cs = scanner_error; }}
 	break;
 	case 37:
@@ -568,7 +573,7 @@ _eof_trans:
 	}
 	}
 	break;
-#line 572 "/home/wael/projects/rl-json-parser/json-parser/lexer.c"
+#line 577 "lexer.c"
 		}
 	}
 
@@ -581,7 +586,7 @@ _again:
 #line 1 "NONE"
 	{ts = 0;}
 	break;
-#line 585 "/home/wael/projects/rl-json-parser/json-parser/lexer.c"
+#line 590 "lexer.c"
 		}
 	}
 
@@ -601,7 +606,7 @@ _again:
 	_out: {}
 	}
 
-#line 219 "/home/wael/projects/rl-json-parser/json-parser/lexer.rl"
+#line 224 "lexer.rl"
 
     /* Check if we failed. */
     if ( cs == scanner_error ) {

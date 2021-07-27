@@ -184,6 +184,11 @@ json_parse(const char* str)
     ret.status	= JSON_INVALID_INPUT;
     ret.value	= NULL;
 
+    /* Check if str pointer null. */
+    if ( !str ) {
+        return ret;
+    }
+
     void*		yyparser;
     size_t		line	= 1;
     const char*	ts	= str;
