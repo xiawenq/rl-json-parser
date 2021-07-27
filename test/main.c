@@ -86,6 +86,15 @@ test_simple_object() {
 	json_free(val);
 }
 
+void test_simple_string(char* json_str) {
+    json_value_t*	val			= json_parse(json_str).value;
+    if (val) {
+        dump(val, 0);
+        printf("\n");
+        json_free(val);
+    }
+}
+
 void
 test_simple_object2() {
 	const char*		json_str	= "{\n\"key\":\"value\",\n\"key2\":\"value2\"\n,\"key3\":23.4}";
@@ -195,6 +204,14 @@ int
 main(int argc, char* argv[]) {
 	test_simple_object();
 	test_simple_object2();
+    test_simple_string("123");    // json parse is passing when input is integer(123).
+    test_simple_string("\"123\"");    // json parse is passing when input is string("123").
+    test_simple_string("true");   // json parse is passing when input is boolean(true).
+    test_simple_string("\true\"");    // json parse is passing when input is string("true").
+    test_simple_string("false");  // json parse is passing when input is boolean(false).
+    test_simple_string("\"false\"");  // json parse is passing when input is string("false").
+    test_simple_string("null");   // json parse is passing when input is null.
+    test_simple_string("\"null\"");   // json parse is passing when input is string("null").
 	test_pass();
 	test_fail();
 	return 0;

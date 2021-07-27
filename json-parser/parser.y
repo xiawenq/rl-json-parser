@@ -65,9 +65,8 @@
 
 %start_symbol root
 
-/* a json file is either an object or an array */
-root		::= object(B).				{ pret->root = B; }
-root		::= array(B).				{ pret->root = B; }
+/* a json file is either an object or an array or an null or boolean or string or integer */
+root		::= value(B).				{ pret->root = B; }
 
 pair(A)		::= JSON_TOK_STRING(B) JSON_TOK_COL value(C).	{ A = json_pair(B, C);	}
 
